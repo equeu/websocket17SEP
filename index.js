@@ -54,7 +54,15 @@ mongoose.connection.on('error', (err) => {
 
 app.use(userRoutes);
 <<<<<<< HEAD
-
+app.get('/checkroute', async (req, res) => {
+  try {
+    const a={t: 'tahir'};
+    res.json(a);
+  } catch (err) {
+    console.error('Error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 app.get('/fetchData', async (req, res) => {
   try {
     //console.log('fetch data');
