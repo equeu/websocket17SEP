@@ -461,7 +461,7 @@ wss.on('connection', (socket) => {
   socket.on('message', async (message) => {
     try {
       const jsonData = JSON.parse(message);
-      if('x' in jsonData)
+      if('userId' in jsonData)
       {
         try {
           const { roomId1, userId, x, y } = jsonData;
