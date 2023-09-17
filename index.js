@@ -361,8 +361,9 @@ app.post('/createroom', async (req, res) => {
     const session = await mongoose.startSession();
     session.startTransaction();
 const p={email: usern , x:215,y:125};
+const myrid=generateRandomString();
   const a={
-    roomId: generateRandomString(),
+    roomId: myrid,
     name: name,
     coordinates: p,
     badgeurl: pic,
@@ -375,13 +376,14 @@ const p={email: usern , x:215,y:125};
     const roomx = await RoomModel(a); // Use findOne instead of find
     
       await roomx.save({ session });
-    
 
-const currenttimex = moment().tz('Asia/Karachi').format('YYYY-MM-DD HH:mm:ss');
+
+
+      const currenttimex = moment().tz('Asia/Karachi').format('YYYY-MM-DD HH:mm:ss');
 
      
         const messagebox = {
-          room_id: roomid,
+          room_id: myrid,
           messages: [
             {
               user_id: usern,
@@ -406,12 +408,8 @@ const currenttimex = moment().tz('Asia/Karachi').format('YYYY-MM-DD HH:mm:ss');
 
         console.log('Initialized Room Chat...');
       
-
-
-
-
-
     
+  
     await session.commitTransaction();
     session.endSession();
   console.log("Room Created Sucessfully!");
