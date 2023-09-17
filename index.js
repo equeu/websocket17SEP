@@ -376,7 +376,42 @@ const p={email: usern , x:215,y:125};
     
       await roomx.save({ session });
     
-  
+
+const currenttimex = moment().tz('Asia/Karachi').format('YYYY-MM-DD HH:mm:ss');
+
+     
+        const messagebox = {
+          room_id: roomid,
+          messages: [
+            {
+              user_id: usern,
+              content: 'xxrp7',
+              time: currenttimex
+            },
+            {
+              user_id: usern,
+              content: 'xxrp7',
+              time: currenttimex
+            },
+            {
+              user_id: usern,
+              content: 'xxrp7',
+              time: currenttimex
+            }
+          ],
+        };
+
+        const newMessage = new Message(messagebox);
+        await newMessage.save({ session });
+
+        console.log('Initialized Room Chat...');
+      
+
+
+
+
+
+    
     await session.commitTransaction();
     session.endSession();
   console.log("Room Created Sucessfully!");
